@@ -1,11 +1,11 @@
+#!/usr/bin/env python3
 import subprocess as sp
 from pathlib import Path
 from tree_sitter import Language
 
 GRAMMAR_GIT_REPO = "https://github.com/tree-sitter/tree-sitter-java.git" 
 GRAMMAR_DIR_NAME = "tree-sitter-java"
-LIB_FILE = Path("build/java-lang.so")
-
+LIB_FILE = "build/java-lang.so"
 
 if __name__ == "__main__":
     vendor_dir = Path("./vendor")
@@ -15,5 +15,5 @@ if __name__ == "__main__":
 
     Language.build_library(
         LIB_FILE, 
-        [vendor_dir / GRAMMAR_DIR_NAME]
+        [str((vendor_dir / GRAMMAR_DIR_NAME).resolve())]
     )
